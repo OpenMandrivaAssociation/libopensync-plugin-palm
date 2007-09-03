@@ -1,22 +1,20 @@
 %define name	libopensync-plugin-palm
-%define version	0.20
+%define version	0.22
 %define release %mkrel 2
 
 Name: 	 	%{name}
-Summary: 	PALM plugin for opensync synchronization tool
 Version: 	%{version}
 Release: 	%{release}
-
-Source:		svn://svn.opensync.org/plugins/palm/%{name}-%{version}.tar.bz2
-URL:		http://www.opensync.org
+Summary: 	PALM plugin for opensync synchronization tool
 License:	LGPL
 Group:		Office
-BuildRoot:	%{_tmppath}/%{name}-buildroot
-
+URL:		http://www.opensync.org
+Source:		http://www.opensync.org/attachment/wiki/download/%{name}-%{version}.tar.bz2
 BuildRequires:	opensync-devel >= 0.20
 BuildRequires:	pilot-link-devel
 BuildRequires:  libneon-devel
 BuildRequires:  libcurl-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This plugin allows applications using OpenSync to synchronise via OPIE
