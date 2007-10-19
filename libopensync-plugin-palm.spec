@@ -1,6 +1,6 @@
 %define name	libopensync-plugin-palm
-%define version	0.22
-%define release %mkrel 2
+%define version	0.33
+%define release %mkrel 
 
 Name: 	 	%{name}
 Version: 	%{version}
@@ -9,7 +9,7 @@ Summary: 	PALM plugin for opensync synchronization tool
 License:	LGPL
 Group:		Office
 URL:		http://www.opensync.org
-Source:		http://www.opensync.org/attachment/wiki/download/%{name}-%{version}.tar.bz2
+Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:	opensync-devel >= 0.20
 BuildRequires:	pilot-link-devel
 BuildRequires:  libneon-devel
@@ -60,5 +60,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/opensync-1.0/opensync/*.h
 %{_libdir}/opensync/plugins/*.la
 %{_libdir}/opensync/formats/*.la
-
-
