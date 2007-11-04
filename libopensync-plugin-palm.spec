@@ -14,6 +14,7 @@ BuildRequires:	opensync-devel >= %{version}
 BuildRequires:	pilot-link-devel
 BuildRequires:  libneon-devel
 BuildRequires:  libcurl-devel
+BuildRequires:	libxml2-devel
 BuildRequires:	cmake
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
