@@ -1,20 +1,20 @@
 %define name	libopensync-plugin-palm
-%define version	0.33
-%define svnrel	2596
-%define release %mkrel 1.%{svnrel}.1
+%define version	0.34
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Version: 	%{version}
 Release: 	%{release}
 Summary: 	PALM plugin for opensync synchronization tool
-License:	LGPL
+License:	LGPLv2+
 Group:		Office
 URL:		http://www.opensync.org
-Source:		http://www.opensync.org/download/releases/%{version}/%{name}-r%{svnrel}.tar.bz2
+Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:	opensync-devel >= %{version}
 BuildRequires:	pilot-link-devel
 BuildRequires:  libneon-devel
 BuildRequires:  libcurl-devel
+BuildRequires:	cmake
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -32,16 +32,17 @@ develop programs using libopensync-plugin-palm, you will need to
 install libopensync-plugin-palm-devel.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
-autoreconf -sfi
-%configure2_5x
+%cmake
 %make
 										
 %install
 rm -rf $RPM_BUILD_ROOT
+cd build
 %makeinstall_std
+cd -
 
 %find_lang %name
 
