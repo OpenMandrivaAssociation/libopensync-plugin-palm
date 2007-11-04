@@ -10,6 +10,7 @@ License:	LGPLv2+
 Group:		Office
 URL:		http://www.opensync.org
 Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
+Patch0:		libopensync-plugin-palm-0.34-find-libxml2.patch
 BuildRequires:	opensync-devel >= %{version}
 BuildRequires:	pilot-link-devel
 BuildRequires:  libneon-devel
@@ -17,6 +18,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	cmake
 BuildRoot:	%{_tmppath}/%{name}-%{version}
+# fwang: it does not produce devel pacakge
+Obsoletes:	%name-devel
 
 %description
 This plugin allows applications using OpenSync to synchronise via OPIE
@@ -34,6 +37,7 @@ install libopensync-plugin-palm-devel.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %cmake
@@ -55,9 +59,3 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README
 %{_libdir}/opensync/*/*.so
 %{_datadir}/opensync/defaults/palm-sync
-
-%files devel
-%defattr(-, root, root)
-%doc AUTHORS README
-%{_includedir}/opensync-1.0/opensync/*.h
-%{_libdir}/opensync/*/*.la
