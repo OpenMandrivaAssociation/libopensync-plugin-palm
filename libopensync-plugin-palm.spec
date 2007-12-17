@@ -17,7 +17,6 @@ BuildRequires:  libneon-devel
 BuildRequires:  libcurl-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	cmake
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 # fwang: it does not produce devel pacakge
 Obsoletes:	%name-devel
 
