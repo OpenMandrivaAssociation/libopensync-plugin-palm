@@ -1,59 +1,46 @@
-%define name	libopensync-plugin-palm
-%define version	0.36
-%define release %mkrel 1
-
-Name: 	 	%{name}
-Version: 	%{version}
-Release: 	%{release}
-Summary: 	PALM plugin for opensync synchronization tool
+Name: 	 	libopensync-plugin-palm
+Version: 	0.22
+Epoch:		1
+Release: 	%{mkrel 3}
+Summary: 	Palm plugin for OpenSync synchronization framework
 License:	LGPLv2+
 Group:		Office
 URL:		http://www.opensync.org
-Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
-BuildRequires:	opensync-devel >= %{version}
+Source0:	http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
+BuildRequires:	libopensync-devel < 0.30
 BuildRequires:	pilot-link-devel
 BuildRequires:  libneon-devel
 BuildRequires:  libcurl-devel
-BuildRequires:	libxml2-devel
-BuildRequires:	cmake
+Requires:	libopensync >= %{epoch}:%{version}
+Obsoletes:	%{name}-devel < %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}
-# fwang: it does not produce devel pacakge
-Obsoletes:	%name-devel
 
 %description
-This plugin allows applications using OpenSync to synchronise via OPIE
-
-%package devel
-Summary:        Header files, libraries and development documentation for libopensync-plugin-palm
-Group:          Networking/Other
-Requires:       %{name} = %{version}  opensync-devel pilot-link-devel
-
-%description devel
-This package contains the header files, static libraries and
-development documentation for libopensync-plugin-palm. If you like to
-develop programs using libopensync-plugin-palm, you will need to
-install libopensync-plugin-palm-devel.
+This plugin allows Palm-based devices to synchronize using the OpenSync
+framework.
 
 %prep
 %setup -q
+autoreconf -sfi
 
 %build
-%cmake
+%configure2_5x
 %make
 										
 %install
-rm -rf $RPM_BUILD_ROOT
-cd build
+rm -rf %{buildroot}
 %makeinstall_std
-cd -
+rm -rf %{buildroot}%{_includedir}
 
-%find_lang %name
+%find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-, root, root)
-%doc AUTHORS README
-%{_libdir}/opensync-1.0/*/*.so
-%{_datadir}/opensync-1.0/defaults/palm-sync
+%doc AUTHORS INSTALL ChangeLog NEWS README
+%{_libdir}/opensync/plugins/*
+%{_libdir}/opensync/formats/*
+%{_datadir}/opensync/defaults/palm-sync
+
