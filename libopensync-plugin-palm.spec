@@ -1,7 +1,7 @@
 Name: 	 	libopensync-plugin-palm
 Version: 	0.22
 Epoch:		1
-Release: 	%{mkrel 3}
+Release: 	%{mkrel 4}
 Summary: 	Palm plugin for OpenSync synchronization framework
 License:	LGPLv2+
 Group:		Office
