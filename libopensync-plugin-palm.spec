@@ -5,7 +5,7 @@ Release: 	%{mkrel 4}
 Summary: 	Palm plugin for OpenSync synchronization framework
 License:	LGPLv2+
 Group:		Office
-URL:		http://www.opensync.org
+URL:		https://www.opensync.org
 Source0:	http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:	libopensync-devel < 0.30
 BuildRequires:	pilot-link-devel
